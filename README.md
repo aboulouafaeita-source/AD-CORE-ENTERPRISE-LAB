@@ -32,9 +32,6 @@
  
 ### Designed topology
 ![Designed Topology](docs/screenshots/topology-diagram.png)
-
-### EVE-NG implementation
-![EVE-NG Topology](docs/screenshots/topology-eve-ng.png)
  
 # Router -> ASA -> SW1 -> SW2 -> Clients
                     |
