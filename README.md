@@ -7,57 +7,56 @@
 # Small enterprise-style lab built in EVE-NG
 #
 # Main components:
-# - Cisco vIOS Router
-# - Cisco ASA Firewall
-# - SW1 / SW2
-# - Windows Server 2022 Core
-# - Windows client
-# - Active Directory Domain Services
-# - DNS
+ - Cisco vIOS Router
+ - Cisco ASA Firewall
+ - SW1 / SW2
+ - Windows Server 2022 Core
+ - Windows client
+ - Active Directory Domain Services
+ - DNS
 
 # Main objective:
-# Build and document a small enterprise lab that provides:
-# - Router and firewall connectivity
-# - Internal LAN communication
-# - Windows Server Core deployment
-# - Active Directory domain controller
-# - DNS resolution
-# - Domain user creation
-# - Domain join from a Windows client
-#
-# =========================================================
+ Build and document a small enterprise lab that provides:
+ - Router and firewall connectivity
+ - Internal LAN communication
+ - Windows Server Core deployment
+ - Active Directory domain controller
+ - DNS resolution
+ - Domain user creation
+ - Domain join from a Windows client#
+ ==============================================
 # TOPOLOGY
-# =========================================================
+ ==============================================
 # Router -> ASA -> SW1 -> SW2 -> Clients
-#                    |
-#                    -> Windows Server Core
-#
+                    |
+                     -> Windows Server Core
+
 # Screenshots:
-# - docs/screenshots/topology-diagram.png
-# - docs/screenshots/topology-eve-ng.png
-#
-# =========================================================
+ - docs/screenshots/topology-diagram.png
+ - docs/screenshots/topology-eve-ng.png
+
+ ===============================================
 # IP PLAN
 # =========================================================
 # WAN Segment
-# - R1 GigabitEthernet0/0  = 10.0.0.1/30
-# - ASA Ethernet0 outside  = 10.0.0.2/30
-#
+ - R1 GigabitEthernet0/0  = 10.0.0.1/30
+ - ASA Ethernet0 outside  = 10.0.0.2/30
+
 # LAN Segment
-# - ASA Ethernet1 inside   = 192.168.10.1/24
-# - SRV-DC1                = 192.168.10.10/24
-# - Windows Client         = 192.168.10.20/24
-#
+ - ASA Ethernet1 inside   = 192.168.10.1/24
+ - SRV-DC1                = 192.168.10.10/24
+ - Windows Client         = 192.168.10.20/24
+
 # DNS
 # - Preferred DNS for all domain members = 192.168.10.10
-#
+
 # Domain
 # - FQDN    = lab.local
 # - NetBIOS = LAB
-#
-# =========================================================
+
+ ============================================
 # ROUTER CONFIGURATION
-# =========================================================
+ ============================================
 enable
 configure terminal
 hostname R1
@@ -115,17 +114,17 @@ ping 192.168.10.1
 # Connectivity validation screenshot:
 # - docs/screenshots/asa-connectivity.png
 #
-# =========================================================
+ ===========================================
 # WINDOWS SERVER CORE CONFIGURATION
-# =========================================================
+ ===========================================
 # Hostname
 # - SRV-DC1
 #
 # Network settings
-# - IP address      = 192.168.10.10
-# - Subnet mask     = 255.255.255.0
-# - Default gateway = 192.168.10.1
-# - DNS server      = 192.168.10.10
+ - IP address      = 192.168.10.10
+ - Subnet mask     = 255.255.255.0
+ - Default gateway = 192.168.10.1
+ - DNS server      = 192.168.10.10
 
 ipconfig /all
 Get-NetAdapter
@@ -144,13 +143,13 @@ Get-ADDomain
 
 # Validation screenshot:
 # - docs/screenshots/server-core-domain.png
-#
+
 # Windows Server commands file:
 # - configs/windows-server/powershell-ad-commands.md
 #
-# =========================================================
-# ACTIVE DIRECTORY USER CREATION
-# =========================================================
+ =====================================
+ ACTIVE DIRECTORY USER CREATION
+ =====================================
 # Create user
 New-ADUser -Name "user1" -SamAccountName user1 -AccountPassword (ConvertTo-SecureString "User@123Aa!" -AsPlainText -Force) -Enabled $true
 
@@ -170,14 +169,14 @@ Get-ADUser user1 -Properties Enabled
 # Validation screenshot:
 # - docs/screenshots/user1-enabled.png
 #
-# =========================================================
+ ========================================
 # WINDOWS CLIENT CONFIGURATION
-# =========================================================
+ =========================================
 # Client network settings
-# - IP address      = 192.168.10.20
-# - Subnet mask     = 255.255.255.0
-# - Default gateway = 192.168.10.1
-# - DNS server      = 192.168.10.10
+ - IP address      = 192.168.10.20
+ - Subnet mask     = 255.255.255.0
+ - Default gateway = 192.168.10.1
+ - DNS server      = 192.168.10.10
 
 # Validation on client
 ping 192.168.10.10
@@ -187,16 +186,16 @@ ping srv-dc1.lab.local
 # DNS validation screenshot:
 # - docs/screenshots/dns-resolution.png
 #
-# =========================================================
+ ======================================
 # DOMAIN JOIN
-# =========================================================
+ ======================================
 # On the Windows client:
-# - Open System Properties
-# - Go to Computer Name
-# - Select Change
-# - Choose Domain
-# - Enter: lab.local
-#
+ - Open System Properties
+ - Go to Computer Name
+ - Select Change
+ - Choose Domain
+ - Enter: lab.local
+
 # Use domain admin credentials:
 # - LAB\Administrator
 #
@@ -213,51 +212,51 @@ echo %logonserver%
 # Validation screenshot:
 # - docs/screenshots/domain-login-validation.png
 #
-# =========================================================
+ ===========================================
 # SCREENSHOTS
-# =========================================================
+ ===========================================
 # This repository includes the following screenshots:
-# - docs/screenshots/topology-diagram.png
-# - docs/screenshots/topology-eve-ng.png
-# - docs/screenshots/asa-connectivity.png
-# - docs/screenshots/server-core-domain.png
-# - docs/screenshots/user1-enabled.png
-# - docs/screenshots/domain-login-validation.png
-# - docs/screenshots/dns-resolution.png
+ - docs/screenshots/topology-diagram.png
+ - docs/screenshots/topology-eve-ng.png
+ - docs/screenshots/asa-connectivity.png
+ - docs/screenshots/server-core-domain.png
+ - docs/screenshots/user1-enabled.png
+ - docs/screenshots/domain-login-validation.png
+ - docs/screenshots/dns-resolution.png
 #
 # Screenshots folder README:
-# - docs/screenshots/README.md
+ - docs/screenshots/README.md
 #
-# =========================================================
+ ===========================================
 # PROJECT STRUCTURE
-# =========================================================
+ ===========================================
 # AD-CORE-ENTERPRISE-LAB/
-# ├── README.md
-# ├── LICENSE
-# ├── .gitignore
-# ├── configs/
-# │   ├── asa/
-# │   │   └── asa-base-config.txt
-# │   ├── router/
-# │   │   └── r1-base-config.txt
-# │   └── windows-server/
-# │       └── powershell-ad-commands.md
-# └── docs/
-#     ├── ip-plan.md
-#     ├── implementation-steps.md
-#     └── screenshots/
-#         ├── README.md
-#         ├── topology-diagram.png
-#         ├── topology-eve-ng.png
-#         ├── asa-connectivity.png
-#         ├── server-core-domain.png
-#         ├── user1-enabled.png
-#         ├── domain-login-validation.png
-#         └── dns-resolution.png
+ ├── README.md
+ ├── LICENSE
+ ├── .gitignore
+ ├── configs/
+ │   ├── asa/
+ │   │   └── asa-base-config.txt
+ │   ├── router/
+ │   │   └── r1-base-config.txt
+ │   └── windows-server/
+ │       └── powershell-ad-commands.md
+ └── docs/
+     ├── ip-plan.md
+     ├── implementation-steps.md
+     └── screenshots/
+         ├── README.md
+         ├── topology-diagram.png
+         ├── topology-eve-ng.png
+         ├── asa-connectivity.png
+         ├── server-core-domain.png
+         ├── user1-enabled.png
+         ├── domain-login-validation.png
+         └── dns-resolution.png
 #
-# =========================================================
+ ===============================================
 # NOTES
-# =========================================================
+ ===============================================
 # - This project documents a working small enterprise AD lab.
 # - Windows Server was deployed as Server Core.
 # - Active Directory and DNS were configured successfully.
