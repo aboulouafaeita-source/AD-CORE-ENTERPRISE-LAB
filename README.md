@@ -29,6 +29,7 @@
  ==============================================
 # TOPOLOGY
  ==============================================
+ 
 ### Designed topology
 ![Designed Topology](docs/screenshots/topology-diagram.png)
 
@@ -45,7 +46,8 @@
 
  ===============================================
 # IP PLAN
-# =========================================================
+ ================================================
+ 
 # WAN Segment
  - R1 GigabitEthernet0/0  = 10.0.0.1/30
  - ASA Ethernet0 outside  = 10.0.0.2/30
@@ -65,6 +67,7 @@
  ============================================
 # ROUTER CONFIGURATION
  ============================================
+ 
 enable
 configure terminal
 hostname R1
@@ -87,6 +90,7 @@ ping 10.0.0.2
  =========================================================
 # ASA CONFIGURATION
  =========================================================
+ 
 enable
 configure terminal
 hostname FW1
@@ -118,13 +122,14 @@ ping 192.168.10.1
 
 # ASA config file:
  - configs/asa/asa-base-config.txt
-#
+
 # Connectivity validation screenshot:
  - docs/screenshots/asa-connectivity.png
 
  ===========================================
 # WINDOWS SERVER CORE CONFIGURATION
  ===========================================
+ 
 # Hostname
  - SRV-DC1
 
@@ -235,7 +240,7 @@ echo %logonserver%
  - docs/screenshots/user1-enabled.png
  - docs/screenshots/domain-login-validation.png
  - docs/screenshots/dns-resolution.png
-#
+
 # Screenshots folder README:
  - docs/screenshots/README.md
 
