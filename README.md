@@ -34,8 +34,8 @@
 ![Designed Topology](docs/screenshots/topology-diagram.png)
  
 # Router -> ASA -> SW1 -> SW2 -> Clients
- #                   |
-  #                   -> Windows Server Core
+#                   |
+#                   -> Windows Server Core
 
 # Screenshots:
  - docs/screenshots/topology-diagram.png
