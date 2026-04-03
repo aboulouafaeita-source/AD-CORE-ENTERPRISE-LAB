@@ -82,11 +82,11 @@ show ip interface brief
 ping 10.0.0.2
 
 # Router config file:
-# - configs/router/r1-base-config.txt
-#
-# =========================================================
+ - configs/router/r1-base-config.txt
+
+ =========================================================
 # ASA CONFIGURATION
-# =========================================================
+ =========================================================
 enable
 configure terminal
 hostname FW1
@@ -117,17 +117,17 @@ ping 10.0.0.1
 ping 192.168.10.1
 
 # ASA config file:
-# - configs/asa/asa-base-config.txt
+ - configs/asa/asa-base-config.txt
 #
 # Connectivity validation screenshot:
-# - docs/screenshots/asa-connectivity.png
-#
+ - docs/screenshots/asa-connectivity.png
+
  ===========================================
 # WINDOWS SERVER CORE CONFIGURATION
  ===========================================
 # Hostname
-# - SRV-DC1
-#
+ - SRV-DC1
+
 # Network settings
  - IP address      = 192.168.10.10
  - Subnet mask     = 255.255.255.0
@@ -150,14 +150,15 @@ Install-ADDSForest -DomainName "lab.local"
 Get-ADDomain
 
 # Validation screenshot:
-# - docs/screenshots/server-core-domain.png
+ - docs/screenshots/server-core-domain.png
 
 # Windows Server commands file:
-# - configs/windows-server/powershell-ad-commands.md
-#
+ - configs/windows-server/powershell-ad-commands.md
+
  =====================================
- ACTIVE DIRECTORY USER CREATION
+ # ACTIVE DIRECTORY USER CREATION
  =====================================
+ 
 # Create user
 New-ADUser -Name "user1" -SamAccountName user1 -AccountPassword (ConvertTo-SecureString "User@123Aa!" -AsPlainText -Force) -Enabled $true
 
@@ -175,11 +176,12 @@ Enable-ADAccount -Identity user1
 Get-ADUser user1 -Properties Enabled
 
 # Validation screenshot:
-# - docs/screenshots/user1-enabled.png
-#
+ - docs/screenshots/user1-enabled.png
+
  ========================================
 # WINDOWS CLIENT CONFIGURATION
  =========================================
+ 
 # Client network settings
  - IP address      = 192.168.10.20
  - Subnet mask     = 255.255.255.0
@@ -192,11 +194,12 @@ nslookup lab.local
 ping srv-dc1.lab.local
 
 # DNS validation screenshot:
-# - docs/screenshots/dns-resolution.png
-#
+ - docs/screenshots/dns-resolution.png
+
  ======================================
 # DOMAIN JOIN
- ======================================
+ =====================================
+ 
 # On the Windows client:
  - Open System Properties
  - Go to Computer Name
@@ -205,12 +208,12 @@ ping srv-dc1.lab.local
  - Enter: lab.local
 
 # Use domain admin credentials:
-# - LAB\Administrator
-#
+ - LAB\Administrator
+
 # Expected result:
-# - Welcome to the lab.local domain.
-#
-# Restart the client after successful domain join.
+ - Welcome to the lab.local domain.
+
+ Restart the client after successful domain join.
 
 # Domain login validation:
 whoami
@@ -218,11 +221,12 @@ echo %userdomain%
 echo %logonserver%
 
 # Validation screenshot:
-# - docs/screenshots/domain-login-validation.png
-#
+ - docs/screenshots/domain-login-validation.png
+
  ===========================================
 # SCREENSHOTS
  ===========================================
+ 
 # This repository includes the following screenshots:
  - docs/screenshots/topology-diagram.png
  - docs/screenshots/topology-eve-ng.png
@@ -234,10 +238,11 @@ echo %logonserver%
 #
 # Screenshots folder README:
  - docs/screenshots/README.md
-#
+
  ===========================================
 # PROJECT STRUCTURE
- ===========================================
+ ==========================================
+ 
 # AD-CORE-ENTERPRISE-LAB/
  ├── README.md
  ├── LICENSE
@@ -261,20 +266,22 @@ echo %logonserver%
          ├── user1-enabled.png
          ├── domain-login-validation.png
          └── dns-resolution.png
-#
+
  ===============================================
 # NOTES
  ===============================================
+ 
 # - This project documents a working small enterprise AD lab.
 # - Windows Server was deployed as Server Core.
 # - Active Directory and DNS were configured successfully.
 # - A Windows client joined the lab.local domain successfully.
 # - User authentication was validated through domain login.
 # - OU and GPO steps can be added later as future improvements.
-#
+
 # =========================================================
 # LICENSE
 # =========================================================
+
 # This repository includes documentation and configuration files only.
 # It does not include ISO images, QEMU images, Cisco images,
 # or any licensed VM files.
