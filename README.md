@@ -75,22 +75,13 @@ This project documents a small enterprise-style lab built in EVE-NG using:
 ### DNS resolution
 ![DNS Resolution](docs/screenshots/dns-resolution.png)
 
+## Notes
 
- ===============================================
-# NOTES
- ===============================================
- 
-# - This project documents a working small enterprise AD lab.
-# - Windows Server was deployed as Server Core.
-# - Active Directory and DNS were configured successfully.
-# - A Windows client joined the lab.local domain successfully.
-# - User authentication was validated through domain login.
-# - OU and GPO steps can be added later as future improvements.
+- This repository contains documentation and configuration files only.
+- It does not include ISO images, QEMU images, Cisco images, or licensed VM files.
+- The lab was implemented with Windows Server 2022 Core.
+- OU and GPO can be added later as future improvements.
 
-# =========================================================
-# LICENSE
-# =========================================================
+## License
 
-# This repository includes documentation and configuration files only.
-# It does not include ISO images, QEMU images, Cisco images,
-# or any licensed VM files.
+MIT
