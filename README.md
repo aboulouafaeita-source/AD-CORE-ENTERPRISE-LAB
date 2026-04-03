@@ -31,13 +31,13 @@ Router -> ASA -> SW1 -> SW2 -> Clients
 - SRV-DC1: 192.168.10.10/24
 - Client: 192.168.10.20/24
 
-- ## Topology
-
-![EVE-NG Topology](docs/topology.png)
-
 ## Topology
 
-![EVE-NG Topology](docs/eve-ng-topology.png)
+### Designed topology
+![Designed Topology](docs/screenshots/topology-diagram.png)
+
+### EVE-NG implementation
+![EVE-NG Topology](docs/screenshots/topology-eve-ng.png)
 
 ## Notes
 
