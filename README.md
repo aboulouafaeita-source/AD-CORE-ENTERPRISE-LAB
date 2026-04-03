@@ -1,11 +1,12 @@
  # AD + ASA + EVE-NG Lab
 
- =========================================================
+ ==========================================
 # AD + ASA + EVE-NG Lab
-# =========================================================
+ ==========================================
+ 
 # Project type:
-# Small enterprise-style lab built in EVE-NG
-#
+ Small enterprise-style lab built in EVE-NG
+
 # Main components:
  - Cisco vIOS Router
  - Cisco ASA Firewall
@@ -48,11 +49,11 @@
  - Windows Client         = 192.168.10.20/24
 
 # DNS
-# - Preferred DNS for all domain members = 192.168.10.10
+ - Preferred DNS for all domain members = 192.168.10.10
 
 # Domain
-# - FQDN    = lab.local
-# - NetBIOS = LAB
+ - FQDN    = lab.local
+ - NetBIOS = LAB
 
  ============================================
 # ROUTER CONFIGURATION
